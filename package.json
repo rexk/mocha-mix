@@ -29,10 +29,11 @@
     "sinon": "^1.14.1"
   },
   "devDependencies": {
-    "babel-core": "^5.4.3",
+    "jsdom": "^3.1.2",
     "mocha": "^2.2.5",
     "mockery": "^1.4.0",
     "react": "^0.13.3",
+    "react-tools": "^0.13.3",
     "sinon": "^1.14.1"
   }
 }
