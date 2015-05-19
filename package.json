@@ -1,10 +1,10 @@
 {
   "name": "mocha-mix",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "",
   "main": "./lib/mocha-mix.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha test"
   },
   "author": {
     "name": "RexK",
@@ -22,15 +22,15 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "jsdom": "^3.1.2",
-    "mockery": "^1.4.0",
-    "react": "^0.13.3",
-    "react-tools": "^0.13.3",
-    "sinon": "^1.14.1"
+    "jsdom": "3.1.2",
+    "mockery": "1.4.0",
+    "react": "0.13.3",
+    "react-tools": "0.13.3",
+    "sinon": "1.14.1"
   },
   "devDependencies": {
     "expect": "^1.6.0",
-    "jsdom": "^3.1.2",
+    "jsdom": "3.1.2",
     "mocha": "^2.2.5",
     "mockery": "^1.4.0",
     "react": "^0.13.3",

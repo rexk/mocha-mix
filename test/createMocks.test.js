@@ -33,7 +33,7 @@ describe('@createMocks', function () {
   it('should return react stub for the spec object', function () {
     var spec = {
       ProfileLink: {
-        require: './ProfileLink',
+        require: './ProfileLink'
       }
     };
 

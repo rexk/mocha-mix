@@ -3,6 +3,8 @@ var ProfilePic = require('./ProfilePic');
 var ProfileLink = require('./ProfileLink');
 
 var Avatar = React.createClass({
+  displayName: 'Avatar',
+
   render: function() {
     return (
       <div>
@@ -12,3 +14,5 @@ var Avatar = React.createClass({
     );
   }
 });
+
+module.exports = Avatar;
