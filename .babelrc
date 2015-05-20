@@ -11,7 +11,6 @@
     "es7.exportExtensions",
     "es7.objectRestSpread",
     "es7.trailingFunctionCommas"
-  ],
-
-  "extensions": [ ".es6", ".es", ".jsx", ".es6.js", ".js" ]
+  ]
+  
 }
