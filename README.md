@@ -57,33 +57,41 @@ module.exports = React.createClass({
 
 ```js
 // ./tests/HelloWorld.test.js
-describe('HelloWorldComponent', function () {
+describe('HelloWorld', function () {
   var MochaMix = require('mocha-mix');
   var sinon = require('sinon');
   var expect = require('expect');
-  var mochaMix = MochaMix.mix({
-    // require path from process.cwd()
-    require: './src/components/HelloWorld'),
+  var mix = MochaMix.mix({
+    require: './src/components/HelloWorld'
   });
 
-  before(mochaMix.before);
-  after(mochaMix.after);
+  before(mix.before);
+  after(mix.after);
 
   it('should return No Name', function () {
-    var helloWorld = mochaMix.renderComponent();
-    var actual = helloWorld.props.getNameString();
+    var helloWorld = mix.renderComponent();
+    var actual = helloWorld.getNameString();
+
+    // Testing ReactClass method directly
     expect(actual).toBe('No Name');
   });
 
   it('should call props.onClick', function () {
     var onClick = sinon.spy();
-    var helloWorld = mochaMix.renderComponent({
+    var helloWorld = mix.renderComponent({
       onClick: onClick
     });
-
-    var div = mochaMix.querySelector(helloWorld, 'div');
-    mochaMix.simulateEvent(div, 'click');
+    MochaMix.simulateEvent(helloWorld, 'click');
     expect(onClick.calledOnce).toBe(true);
+  });
+
+  it('should render nameString', function () {
+    var HelloWorld = mix.requireComponent();
+
+    // Or use yahoo/jsx-test assert method for regex pattern match
+    MochaMix.assertRender(HelloWorld, {
+      name: 'RexK'
+    }, 'RexK');
   });
 });
 ```
@@ -140,7 +148,7 @@ describe('Avatar', function () {
     // require path from process.cwd()
     require: './src/components/Avatar'),
 
-    reactMocks: {
+    mocks: {
       // Same require path as in Avatar.jsx file
       ProfilePic: './PofilePic',
       ProfileLink: './ProfileLink'
@@ -153,11 +161,13 @@ describe('Avatar', function () {
 
   it('should pass username to ProfilePic', function () {
     var expected = 'Rex Kim';
-    mochaMix.renderComponent({ username: expected });
+    var avatar = mochaMix.renderComponent({ username: expected });
 
     // Mocked ReactClass for ProfilePic
-    var ProfilePic = mochaMix.reactMocks.ProfilePic;
-    var profilePic = mochaMix.findRenderedComponentWithType(ProfilePic);
+    var ProfilePic = mochaMix.mocks.ProfilePic;
+
+    // Methods for React.addons.TestUtils are aliased for easy access
+    var profilePic = MochaMix.findRenderedComponentWithType(avatar, ProfilePic);
     expect(profilePic.props.username).toBe(expected);
   });
 
@@ -167,7 +177,7 @@ describe('Avatar', function () {
 ### Composite Tests (with context)
 Let's try to test composite which users react router
 ```js
-// ./src/NavBar.jsx
+// ./src/NavBar.es6
 var React = require('react');
 var Router = require('react-router');
 var Navigation = Router.Navigation;
@@ -199,20 +209,18 @@ describe('NavBar', function () {
   var React = require('react');
   var MochaMix = require('mocha-mix');
   var mochaMix = mochaMix.mix({
-    require: './src/NavBar',
-
-    ComponentWrapper: MochaMix.ReactRouterContextWrapper
+    require: './src/components/NavBar',
+    context: MochaMix.contexts.ReactRouter
   });
 
   before(mochaMix.before);
   after(mochaMix.after);
 
   it('should transition to "route3"', function () {
-    var navBar = mochaMix.renderComponent();
-    var button = mochaMix.querySelector(navBar, 'button');
-    mochaMix.simulateEvent(button, 'click');
-    var transitionToCall = navBar.context.transitionTo.getCall[0];
-
+    var navBar = mix.renderComponent();
+    var button = MochaMix.elementQuerySelector(navBar, 'button');
+    MochaMix.simulateEvent(button, 'click');
+    var transitionToCall = navBar.context.router.transitionTo.getCall(0);
     // We are only interested in the first argument for the transitionTo call
     expect(transitionToCall.args[0]).toBe('route3');
   });
