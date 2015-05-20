@@ -7,3 +7,5 @@ var ProfilePic = React.createClass({
     );
   }
 });
+
+module.exports = ProfilePic;

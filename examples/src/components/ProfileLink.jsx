@@ -9,3 +9,5 @@ var ProfileLink = React.createClass({
     );
   }
 });
+
+module.exports = ProfileLink;

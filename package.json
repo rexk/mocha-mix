@@ -2,7 +2,7 @@
   "name": "mocha-mix",
   "version": "0.1.0",
   "description": "",
-  "main": "./lib/mocha-mix.js",
+  "main": "./index.js",
   "scripts": {
     "test": "node_modules/.bin/mocha test"
   },

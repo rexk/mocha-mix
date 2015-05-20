@@ -1,24 +1,6 @@
 describe('@createMocks', function () {
-  var MochaMix = require('../lib/mocha-mix');
+  var MochaMix = require('../');
   var expect = require('expect');
-  var mockSpec = {
-    ProfileLink: './ProfileLink',
-
-    Router: {
-      require: 'react-router',
-
-      modules: {
-        Link: true,
-
-        Navigation: false
-      }
-    },
-
-    Lodash: {
-      require: 'lodash',
-      react: false
-    }
-  };
 
   it('should return react stub for the string value', function () {
     var spec = {

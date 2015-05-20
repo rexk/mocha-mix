@@ -1,5 +1,5 @@
 describe('@registerMocks', function () {
-  var MochaMix = require('../lib/mocha-mix');
+  var MochaMix = require('../');
   var expect = require('expect');
   var mockery = require('mockery');
 
@@ -44,7 +44,6 @@ describe('@registerMocks', function () {
 
     var Router = require('react-router');
     var Link = Router.Link;
-    var Navigation = Router.Navigation;
 
     expect(Link).toBe(mocks.Router.Link);
     expect(Router.Navigation).toExist();

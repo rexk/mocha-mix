@@ -2,11 +2,13 @@ var React = require('react');
 
 module.exports = React.createClass({
 
+  displayName: 'HelloWorld',
+
   getDefaultProps: function () {
     return {
       onClick: Function.prototype,
       name: ''
-    }
+    };
   },
 
   getNameString: function () {
