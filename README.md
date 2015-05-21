@@ -1,8 +1,11 @@
 # mocha-mix
+[![npm version](https://badge.fury.io/js/mocha-mix.svg)](http://badge.fury.io/js/mocha-mix)
+[![Build Status](https://travis-ci.org/rexk/mocha-mix.svg)](https://travis-ci.org/rexk/mocha-mix)
+
 `mocha-mix` is a tool that make it easy to test ReactJS files and includes some helpers for testing and mocking modules and components. Mix it with `mocha` with ease, and fast testing.
 
 The main feature of `mocha-mix` are:
-* Allows your to require `.jsx`, `es6`, `es6.js` in your test
+* Allows you to require `.jsx`, `es6`, `js` in your test
 * Includes some helpers to simplify the test of React Components
 * Assertion methods to check the component renders the correct html based on the given `props` (from Yahoo's jsx-test)
 * Ability to specify modules and components to be mocked.
@@ -17,7 +20,7 @@ for more targeted mocking, Jest is not the tool. Just like me.
 ## Inspiration
 I am grateful http://www.hammerlab.org for posting `Testing React Web Apps with Mocha`.
 Most of implementation is based on the post. I also thank you for https://github.com/yahoo/jsx-test for
-creating simple solution for jsx-test.
+creating a simple, yet powerful solution for jsx-test.
 
 ## Install
 ```
@@ -291,10 +294,6 @@ import ShinyObject from '../shyny';
 
 export default React.createClass({
 
-  handleClick() {
-    this.transitionTo('route3');
-  },
-
   render() {
     return (
       <div>
@@ -307,7 +306,7 @@ export default React.createClass({
 ```
 
 ```js
-describe('NavBarWithLink', function () {
+describe('ShinyObject', function () {
   var MochaMix = require('../../');
   var shinyMock = {
     boom: function () {
