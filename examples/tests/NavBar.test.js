@@ -3,7 +3,6 @@ describe('NavBar', function () {
   var MochaMix = require('../../');
   var sandbox = MochaMix.sandbox;
   var stubContexts = MochaMix.stubContexts;
-  MochaMix.registerBabel();
   var stubRouter = stubContexts.createReactRouterStub(sandbox);
   var mix = MochaMix.mix({
     require: './examples/src/components/NavBar',

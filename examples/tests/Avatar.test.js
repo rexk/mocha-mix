@@ -1,6 +1,5 @@
 describe('Avatar', function () {
   var MochaMix = require('../../');
-  MochaMix.registerBabel();
   var expect = require('expect');
   var mix = MochaMix.mix({
 

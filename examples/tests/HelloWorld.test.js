@@ -1,6 +1,5 @@
 describe('HelloWorld', function () {
   var MochaMix = require('../../index.js');
-  MochaMix.registerBabel();
   var sinon = require('sinon');
   var expect = require('expect');
   var mix = MochaMix.mix({

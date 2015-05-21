@@ -1,6 +1,7 @@
 # mocha-mix
 [![npm version](https://badge.fury.io/js/mocha-mix.svg)](http://badge.fury.io/js/mocha-mix)
 [![Build Status](https://travis-ci.org/rexk/mocha-mix.svg)](https://travis-ci.org/rexk/mocha-mix)
+[![bitHound Score](https://www.bithound.io/github/rexk/mocha-mix/badges/score.svg)](https://www.bithound.io/github/rexk/mocha-mix)
 
 `mocha-mix` is a tool that make it easy to test ReactJS files and includes some helpers for testing and mocking modules and components. Mix it with `mocha` with ease, and fast testing.
 

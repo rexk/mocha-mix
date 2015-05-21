@@ -1,6 +1,5 @@
 describe('NavBarWithLink', function () {
   var MochaMix = require('../../');
-  MochaMix.registerBabel();
   var shinyMock = {
     boom: function () {
       return 'mocking boom';

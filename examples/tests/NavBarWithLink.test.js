@@ -3,7 +3,6 @@ describe('NavBarWithLink', function () {
   var MochaMix = require('../../');
   var stubContexts = MochaMix.stubContexts;
   var sandbox = MochaMix.sandbox;
-  MochaMix.registerBabel();
   var stubRouter = stubContexts.createReactRouterStub(sandbox);
   var mix = MochaMix.mix({
     require: './examples/src/components/NavBarWithLink',
