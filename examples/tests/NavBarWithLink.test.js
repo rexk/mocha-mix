@@ -1,8 +1,10 @@
 describe('NavBarWithLink', function () {
   var expect = require('expect');
   var MochaMix = require('../../');
+  var stubContexts = MochaMix.stubContexts;
+  var sandbox = MochaMix.sandbox;
   MochaMix.registerBabel();
-  var stubRouter = MochaMix.contexts.ReactRouter;
+  var stubRouter = stubContexts.createReactRouterStub(sandbox);
   var mix = MochaMix.mix({
     require: './examples/src/components/NavBarWithLink',
     context: stubRouter,
@@ -18,6 +20,9 @@ describe('NavBarWithLink', function () {
 
   before(mix.before);
   after(mix.after);
+  afterEach(function () {
+    sandbox.reset();
+  });
 
   it('should transition to "route3"', function () {
     var navBar = mix.renderComponent();

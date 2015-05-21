@@ -9,6 +9,7 @@ var TestUtils = require('react/addons').addons.TestUtils;
 module.exports = {
   createMocks: MochaMix.createMocks,
   registerMocks: MochaMix.registerMocks,
+  sandbox: MochaMix.sandbox,
   mix: MochaMix.mix,
   render: helpers.render,
   renderComponent: helpers.renderComponent,
@@ -26,8 +27,8 @@ module.exports = {
   disableStyles: compilers.disableStyles,
   disableRawFiles: compilers.disableRawFiles,
   enableJSXFiles: compilers.enableJSXFiles,
-  contexts: contexts,
-  
+  stubContexts: contexts,
+
   // TestUtils alias
   Simulate: TestUtils.Simulate,
   renderIntoDocument: TestUtils.renderIntoDocument,
