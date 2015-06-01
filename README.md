@@ -1,4 +1,5 @@
 # mocha-mix
+
 [![npm version](https://badge.fury.io/js/mocha-mix.svg)](http://badge.fury.io/js/mocha-mix)
 [![Build Status](https://travis-ci.org/rexk/mocha-mix.svg)](https://travis-ci.org/rexk/mocha-mix)
 [![bitHound Score](https://www.bithound.io/github/rexk/mocha-mix/badges/score.svg)](https://www.bithound.io/github/rexk/mocha-mix)
@@ -211,10 +212,13 @@ sake of example, let's spy on the context
 ```js
 describe('NavBar', function () {
   var React = require('react');
-  var MochaMix = require('mocha-mix');
-  var mochaMix = mochaMix.mix({
-    require: './src/components/NavBar',
-    context: MochaMix.contexts.ReactRouter
+  var MochaMix = require('../../');
+  var sandbox = MochaMix.sandbox;
+  var stubContexts = MochaMix.stubContexts;
+  var stubRouter = stubContexts.createReactRouterStub(sandbox);
+  var mix = MochaMix.mix({
+    require: './examples/src/components/NavBar',
+    context: stubRouter
   });
 
   before(mochaMix.before);
