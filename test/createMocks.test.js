@@ -56,4 +56,34 @@ describe('@createMocks', function () {
     expect(mocks.Router.Link).toExist();
     expect(mocks.Router.Link.displayName).toBe('Link stub');
   });
+
+  it('should return react mocks for Router.Link with customTag', function () {
+    var spec = {
+      Router: {
+        require: 'react-router',
+
+        modules: {
+          Link: {
+            tagName: 'a'
+          }
+        }
+      }
+    };
+
+    var mocks = MochaMix.createMocks(spec);
+    expect(mocks.Router.Link).toExist();
+    expect(mocks.Router.Link.displayName).toBe('Link stub');
+    MochaMix.assertRender(mocks.Router.Link, {}, 'a');
+  });
+
+  it('should return react stub with given tagName', function () {
+    var spec = {
+      CustomInput: {
+        require: './ProfileLink',
+        tagName: 'input'
+      }
+    };
+    var mocks = MochaMix.createMocks(spec);
+    MochaMix.assertRender(mocks.CustomInput, {}, 'input');
+  });
 });
