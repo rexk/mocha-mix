@@ -179,6 +179,46 @@ describe('Avatar', function () {
 });
 ```
 
+Start from v0.1.3 `mocha-mix` supports custom tagName for react stub objects
+
+```js
+describe('Avatar', function () {
+  var MochaMix = require('mocha-mix');
+  var expect = require('expect');
+  var mochaMix = MochaMix.mix({
+    // require path from process.cwd()
+    require: './src/components/Avatar'),
+
+    mocks: {
+      // Same require path as in Avatar.jsx file
+      ProfilePic: {
+        require: './ProfilePic',
+        tagName: 'a'
+      },
+      ProfileLink: './ProfileLink'
+    }
+
+  });
+
+  before(mochaMix.before);
+  after(mochaMix.after);
+
+  it('should pass username to ProfilePic', function () {
+    var expected = 'Rex Kim';
+    var avatar = mochaMix.renderComponent({ username: expected });
+
+    // Mocked ReactClass for ProfilePic
+    var ProfilePic = mochaMix.mocks.ProfilePic;
+
+    // Methods for React.addons.TestUtils are aliased for easy access
+    var profilePic = MochaMix.findRenderedComponentWithType(avatar, ProfilePic);
+    expect(profilePic.props.username).toBe(expected);
+  });
+
+});
+```
+
+
 ### Composite Tests (with context)
 Let's try to test composite which users react router
 ```js
@@ -270,6 +310,43 @@ describe('NavBarWithLink', function () {
         require: 'react-router',
         modules: {
           Link: true
+        }
+      }
+    }
+  });
+
+  before(mix.before);
+  after(mix.after);
+
+  it('should transition to "route3"', function () {
+    var navBar = mix.renderComponent();
+
+    var Link = mix.mocks.Router.Link;
+    var link = MochaMix.findRenderedComponentWithType(navBar, Link);
+    // We want to make sure props for link is proper route
+    expect(link.props.to).toBe('route3');
+  });
+
+});
+
+```
+
+As of v0.1.3 `mocha-mix` support custom tagName for internal modules as well
+```js
+describe('NavBarWithLink', function () {
+  var expect = require('expect');
+  var MochaMix = require('../../');
+  var stubRouter = MochaMix.contexts.ReactRouter;
+  var mix = MochaMix.mix({
+    require: './src/components/NavBarWithLink',
+    context: stubRouter,
+    mocks: {
+      Router: {
+        require: 'react-router',
+        modules: {
+          Link: {
+            tagName: 'a'
+          }
         }
       }
     }
