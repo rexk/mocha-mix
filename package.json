@@ -1,6 +1,6 @@
 {
   "name": "mocha-mix",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "An easy way to test and mock your React Components",
   "main": "./index.js",
   "scripts": {
@@ -22,6 +22,10 @@
     "unit testing"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rexk/mocha-mix"
+  },
   "peerDependencies": {
     "babel-core": "^5.x",
     "jsdom": "^3.1.x",
@@ -32,7 +36,7 @@
     "react-router": "*"
   },
   "devDependencies": {
-    "babel-core": "^5.4.7",
+    "babel-core": "5.6.x",
     "expect": "^1.6.0",
     "jsdom": "3.1.2",
     "mocha": "^2.2.5",
@@ -40,6 +44,6 @@
     "react": "0.13.3",
     "react-router": "0.13.3",
     "react-tools": "0.13.3",
-    "sinon": "1.14.1"
+    "sinon": "1.15.x"
   }
 }
