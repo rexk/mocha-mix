@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.5
+* Add `mockery.deregisterAll()` in `before` method
+* Add repository field in `package.json`
+* Modify `.babelrc` to use `stage` rather than listing all optional features.
+* Add David badge
+
 ## v0.1.4
 * (hotfix) enabled `useCleanCache` again
 * Register mocks for `react`, `react/addons`, `react-tools` so they are not influenced by useCleanCache
