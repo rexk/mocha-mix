@@ -6,6 +6,8 @@
 [![Dependency Status](https://david-dm.org/rexk/mocha-mix.svg)](https://david-dm.org/rexk/mocha-mix)
 [![devDependency Status](https://david-dm.org/rexk/mocha-mix/dev-status.svg)](https://david-dm.org/rexk/mocha-mix#info=devDependencies)
 [![peerDependency Status](https://david-dm.org/rexk/mocha-mix/peer-status.svg)](https://david-dm.org/rexk/mocha-mix#info=peerDependencies)
+[![Code Climate](https://codeclimate.com/github/rexk/mocha-mix/badges/gpa.svg)](https://codeclimate.com/github/rexk/mocha-mix)
+[![Test Coverage](https://codeclimate.com/github/rexk/mocha-mix/badges/coverage.svg)](https://codeclimate.com/github/rexk/mocha-mix/coverage)
 
 `mocha-mix` is a tool that make it easy to test ReactJS files and includes some helpers for testing and mocking modules and components. Mix it with `mocha` with ease, and fast testing.
 
