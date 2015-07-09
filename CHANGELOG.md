@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v0.1.6
+* Pass props and children to stub elements
+
 ## v0.1.5
 * Add `mockery.deregisterAll()` in `before` method
 * Add repository field in `package.json`
