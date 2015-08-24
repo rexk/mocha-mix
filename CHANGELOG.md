@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.1.7
+* https://github.com/rexk/mocha-mix/pull/19
+* https://github.com/rexk/mocha-mix/pull/18
+
 ## v0.1.6
 * Pass props and children to stub elements
 
