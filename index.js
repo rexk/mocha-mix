@@ -1,5 +1,5 @@
-require('./lib/prepare-dom');
 var MochaMix = require('./lib/mocha-mix');
+var jsdom = require('./lib/jsdom');
 var helpers = require('./lib/helpers');
 var compilers = require('./lib/compilers');
 var assert = require('./lib/assert');
@@ -28,6 +28,8 @@ module.exports = {
   disableRawFiles: compilers.disableRawFiles,
   enableJSXFiles: compilers.enableJSXFiles,
   stubContexts: contexts,
+  prepareJsDom: jsdom.prepareJsDom,
+  tearDownJsdom: jsdom.tearDownJsdom,
 
   // TestUtils alias
   Simulate: TestUtils.Simulate,
