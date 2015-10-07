@@ -172,3 +172,5 @@ examples/
 .*rc
 .*.yml
 .npmignore
+.vagrant/
+Vagrantfile
