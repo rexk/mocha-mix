@@ -1,6 +1,6 @@
 {
   "name": "mocha-mix",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "An easy way to test and mock your React Components",
   "main": "./index.js",
   "scripts": {
@@ -31,9 +31,6 @@
     "babel-core": "^5.0",
     "jsdom": "^3.1",
     "mockery": "^1.4",
-    "react": "*",
-    "react-router": "*",
-    "react-tools": "*",
     "sinon": "^1.15"
   },
   "devDependencies": {
