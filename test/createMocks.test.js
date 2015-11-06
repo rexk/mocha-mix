@@ -1,5 +1,7 @@
 describe('@createMocks', function () {
   var MochaMix = require('../');
+  var MockUtils = require('../lib/MockUtils');
+  var createMocks = MockUtils.createMocks;
   var expect = require('expect');
 
   it('should return react stub for the string value', function () {
@@ -7,9 +9,9 @@ describe('@createMocks', function () {
       ProfileLink: './ProfileLink'
     };
 
-    var mocks = MochaMix.createMocks(spec);
+    var mocks = createMocks(spec);
     expect(mocks.ProfileLink).toExist();
-    expect(mocks.ProfileLink.displayName).toBe('ProfileLink stub');
+    expect(mocks.ProfileLink.displayName).toBe('Stub(ProfileLink)');
   });
 
   it('should return react stub for the spec object', function () {
@@ -19,12 +21,12 @@ describe('@createMocks', function () {
       }
     };
 
-    var mocks = MochaMix.createMocks(spec);
+    var mocks = createMocks(spec);
     expect(mocks.ProfileLink).toExist();
-    expect(mocks.ProfileLink.displayName).toBe('ProfileLink stub');
+    expect(mocks.ProfileLink.displayName).toBe('Stub(ProfileLink)');
   });
 
-  it('should return custom mock', function () {
+  it.only('should return custom mock', function () {
     var Stub = {
       name: 'hello'
     };
@@ -37,7 +39,7 @@ describe('@createMocks', function () {
       }
     };
 
-    var mocks = MochaMix.createMocks(spec);
+    var mocks = createMocks(spec);
     expect(mocks.Lodash.name).toBe(Stub.name);
   });
 
@@ -52,7 +54,8 @@ describe('@createMocks', function () {
       }
     };
 
-    var mocks = MochaMix.createMocks(spec);
+    var mocks = createMocks(spec);
+    console.log('mocks', mocks);
     expect(mocks.Router.Link).toExist();
     expect(mocks.Router.Link.displayName).toBe('Link stub');
   });
@@ -70,7 +73,7 @@ describe('@createMocks', function () {
       }
     };
 
-    var mocks = MochaMix.createMocks(spec);
+    var mocks = createMocks(spec);
     expect(mocks.Router.Link).toExist();
     expect(mocks.Router.Link.displayName).toBe('Link stub');
     MochaMix.assertRender(mocks.Router.Link, {}, 'a');
@@ -83,7 +86,7 @@ describe('@createMocks', function () {
         tagName: 'input'
       }
     };
-    var mocks = MochaMix.createMocks(spec);
+    var mocks = createMocks(spec);
     MochaMix.assertRender(mocks.CustomInput, {}, 'input');
   });
 });
