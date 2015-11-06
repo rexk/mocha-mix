@@ -26,7 +26,7 @@ describe('@createMocks', function () {
     expect(mocks.ProfileLink.displayName).toBe('Stub(ProfileLink)');
   });
 
-  it.only('should return custom mock', function () {
+  it('should return custom mock', function () {
     var Stub = {
       name: 'hello'
     };
@@ -55,9 +55,8 @@ describe('@createMocks', function () {
     };
 
     var mocks = createMocks(spec);
-    console.log('mocks', mocks);
     expect(mocks.Router.Link).toExist();
-    expect(mocks.Router.Link.displayName).toBe('Link stub');
+    expect(mocks.Router.Link.displayName).toBe('Stub(Link)');
   });
 
   it('should return react mocks for Router.Link with customTag', function () {
@@ -75,7 +74,7 @@ describe('@createMocks', function () {
 
     var mocks = createMocks(spec);
     expect(mocks.Router.Link).toExist();
-    expect(mocks.Router.Link.displayName).toBe('Link stub');
+    expect(mocks.Router.Link.displayName).toBe('Stub(Link)');
     MochaMix.assertRender(mocks.Router.Link, {}, 'a');
   });
 
