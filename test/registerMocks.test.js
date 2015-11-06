@@ -1,7 +1,8 @@
 describe('@registerMocks', function () {
-  var MochaMix = require('../');
   var expect = require('expect');
   var mockery = require('mockery');
+  var MockUtils = require('../lib/MockUtils');
+  var mapMocks = MockUtils.mapMocks;
 
   beforeEach(function () {
     mockery.enable({
@@ -21,9 +22,9 @@ describe('@registerMocks', function () {
       ProfileLink: './ProfileLink'
     };
 
-    var mocks = MochaMix.createMocks(spec);
-    MochaMix.registerMocks(spec, mocks);
-
+    var mocks = MockUtils.createNormalizedSpec(spec);
+    MockUtils.registerMocks(mocks);
+    mocks = mapMocks(mocks);
     var ProfileLink = require('./ProfileLink');
     expect(ProfileLink).toBe(mocks.ProfileLink);
   });
@@ -39,15 +40,14 @@ describe('@registerMocks', function () {
       }
     };
 
-    var mocks = MochaMix.createMocks(spec);
-    MochaMix.registerMocks(spec, mocks);
+    var mocks = MockUtils.createNormalizedSpec(spec);
+    MockUtils.registerMocks(mocks);
+    mocks = mapMocks(mocks);
 
     var Router = require('react-router');
     var Link = Router.Link;
 
     expect(Link).toBe(mocks.Router.Link);
-    expect(Router.Navigation).toExist();
-    expect(typeof Router.Navigation.goBack).toBe('function');
   });
 
   it('should register non react mock', function () {
@@ -62,8 +62,10 @@ describe('@registerMocks', function () {
         mock: Stub
       }
     };
-    var mocks = MochaMix.createMocks(spec);
-    MochaMix.registerMocks(spec, mocks);
+    var mocks = MockUtils.createNormalizedSpec(spec);
+    MockUtils.registerMocks(mocks);
+    mocks = mapMocks(mocks);
+
     expect(mocks.expect).toBe(Stub);
   });
 });
