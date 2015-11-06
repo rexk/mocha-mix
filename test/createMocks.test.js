@@ -88,4 +88,16 @@ describe('@createMocks', function () {
     var mocks = createMocks(spec);
     MochaMix.assertRender(mocks.CustomInput, {}, 'input');
   });
+
+  it('should return react stub for the spec object with', function () {
+    var spec = {
+      ProfileLink: {
+        import: './ProfileLink'
+      }
+    };
+
+    var mocks = createMocks(spec);
+    expect(mocks.ProfileLink).toExist();
+    expect(mocks.ProfileLink.displayName).toBe('Stub(ProfileLink)');
+  });
 });
