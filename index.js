@@ -1,4 +1,4 @@
-var MochaMix = require('./lib/mocha-mix');
+var MochaMix = require('./lib/MochaMix');
 var jsdom = require('./lib/jsdom');
 var helpers = require('./lib/helpers');
 var compilers = require('./lib/compilers');
