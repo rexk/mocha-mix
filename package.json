@@ -28,13 +28,6 @@
     "type": "git",
     "url": "https://github.com/rexk/mocha-mix"
   },
-  "peerDependencies": {
-    "mockery": "^1.4",
-    "react": "^0.13.3",
-    "react-tools": "^0.13.3",
-    "sinon": "^1.15",
-    "jsdom": ">=3.1"
-  },
   "devDependencies": {
     "babel-core": "^5.8.29",
     "babel-eslint": "^4.1.3",
