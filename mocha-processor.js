@@ -1,4 +1,4 @@
-var MochaMix = require('./index.js');
+var MochaMix = require('./src/index');
 MochaMix.registerBabel();
 MochaMix.prepareJsDom();
 
@@ -6,7 +6,6 @@ var MochaMix = require('mocha-mix');
 var mochaMixJsdom = require('mocha-mix-jsdom-3');
 var mochaMixNoStyles = require('mocha-mix-no-style');
 var createMockGenerator = MochaMix.createMockGenerator;
-MochaMix.use(mochaMixBabel6());
 MochaMix.use(mochaMixReact());
 MochaMix.use(useMochaHook());
 MochaMix.use(mochaMixJsdom());
@@ -67,9 +66,11 @@ var ComplexComponent = mix.import();
 //   mock: MixMockGenerator or anything else   default to defaultMockGenerator
 //
 // class Mixer
-//   mixRoot: MixRoot,
 //   import: function
 //   importAsWildcard: function
+//   registerMock: function
+//   clearMock: function
+//   mocks
 //
 // class MixResult
 //   mocks: Map<string, any>
