@@ -29,18 +29,13 @@
     "url": "https://github.com/rexk/mocha-mix"
   },
   "devDependencies": {
-    "babel-core": "^5.8.29",
-    "babel-eslint": "^4.1.3",
-    "eslint": "^1.7.3",
-    "eslint-plugin-react": "^3.6.3",
-    "expect": "^1.12.0",
-    "expect-jsx": "^2.1.0",
-    "istanbul": "^0.3.22",
-    "jsdom": "^3.1.2",
-    "mocha": "^2.3.3",
-    "mockery": "^1.4.0",
-    "react": "^0.13.3",
-    "react-router": "^0.13.3",
-    "sinon": "^1.17.1"
+    "babel-eslint": "^5.0.0-beta6",
+    "eslint": "^1.10.3",
+    "eslint-plugin-react": "^3.15.0",
+    "mocha": "^2.3.4"
+  },
+  "dependencies": {
+    "lodash.isempty": "^4.0.0",
+    "lodash.isobject": "^3.0.2"
   }
 }
