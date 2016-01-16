@@ -1,11 +1,12 @@
 var path = require('path');
 var registry = require('./registry');
 var createMixRoot = require('./createMixRoot');
-var REGEX_RELATIVE = /^\./i;
+var REGEX_IS_RELATIVE = /^\./i;
 
 function registerHook(mixer) {
   return function register(hookName) {
-    var testHooks = registry.get('getTestHooks');
+    var getTestHooks = registry.get('getTestHooks') || Function.prototype;
+    var testHooks = getTestHooks();
     var hookFuncs = registry.get(hookName) || [];
     hookFuncs.forEach(function (hookFunc) {
       testHooks[hookName](hookFunc(mixer));
@@ -22,7 +23,7 @@ function getModulePath(importPath, rootDir) {
     return mock.import;
   }
 
-  if (REGEX_RELATIVE.test(importPath)) {
+  if (REGEX_IS_RELATIVE.test(importPath)) {
     return path.join(rootDir, importPath);
   }
 
@@ -36,6 +37,7 @@ function createMixer(mixRoot) {
   var mocks = {};
   var originals = {};
   var mixer = {
+    mixRoot: mixRoot,
     import: function () {
       var _module = require(importPath);
       var _module2 = _module && _module.__esModule ? _module : {default: _module};

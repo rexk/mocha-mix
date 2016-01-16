@@ -19,7 +19,9 @@ function setTestHookGetter(getter) {
 }
 
 function addTestHook(hookName, fn) {
-  var hook = createMixHook(fn);
+  var hook = createMixHook(function () {
+    return fn;
+  });
   var hookList = registry.get(hookName) || [];
   hookList.push(hook);
   registry.set(hookName, hookList);

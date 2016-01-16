@@ -1,9 +1,11 @@
 var createMockGenerator = require('./createMockGenerator');
 
-var defaultMockGenerator = createMockGenerator(function () {
+function defaultMock() {
   return {
     __emptyDefaultMock: true
   };
-});
+}
+
+var defaultMockGenerator = createMockGenerator(defaultMock);
 
 module.exports = defaultMockGenerator;

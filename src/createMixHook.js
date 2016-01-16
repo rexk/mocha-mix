@@ -3,7 +3,7 @@ function isMochaMixHook(hook) {
 }
 
 function createMixHook(fn) {
-  if (typeof fn === 'function') {
+  if (typeof fn !== 'function') {
     throw new Error('createMixHook expects a function as its argument');
   }
 
@@ -16,6 +16,7 @@ function createMixHook(fn) {
   }
 
   MixHook.__isMochaMixHook = true;
+  return MixHook;
 }
 
 module.exports = createMixHook;

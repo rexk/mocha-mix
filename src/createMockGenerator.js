@@ -3,7 +3,7 @@ function isMochaMixMockGenerator(generator) {
 }
 
 function createMockGenerator(fn) {
-  if (typeof fn === 'function') {
+  if (typeof fn !== 'function') {
     throw new Error('createMockGenerator expects a function as its argument');
   }
 
