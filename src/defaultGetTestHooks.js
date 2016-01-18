@@ -1,9 +1,9 @@
 function defaultGetTestHooks() {
   return {
     before: global.before,
-    after: global.after,
     beforeEach: global.beforeEach,
-    afterEach: global.afterEach
+    afterEach: global.afterEach,
+    after: global.after
   };
 }
 

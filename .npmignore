@@ -166,7 +166,6 @@ coverage
 build/Release
 
 mocha-processor.js
-test/
 examples/
 .gitignore
 .*rc

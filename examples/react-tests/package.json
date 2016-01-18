@@ -1,0 +1,29 @@
+{
+  "name": "react-tests",
+  "version": "1.0.0",
+  "description": "mocha-mix react test example",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --require ./mocha-processor.js $(find ./src -name *.test.js)",
+    "test:watch": "mocha --watch --require ./mocha-processor.js $(find ./src -name *.test.js)"
+  },
+  "dependencies": {
+    "babel-core": "^6.4.0",
+    "babel-eslint": "^5.0.0-beta6",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "babel-register": "^6.4.3",
+    "eslint-plugin-react": "^3.15.0",
+    "mocha": "^2.3.4",
+    "mocha-mix": "file:/Users/Rex/node-workspace/mocha-mix",
+    "mocha-mix-jsdom": "file:/Users/Rex/node-workspace/mocha-mix-jsdom",
+    "mocha-mix-mockery": "file:/Users/Rex/node-workspace/mocha-mix-mockery",
+    "mocha-mix-react": "file:/Users/Rex/node-workspace/mocha-mix-react",
+    "react": "^0.14.6",
+    "react-addons-test-utils": "^0.14.6",
+    "react-dom": "^0.14.6"
+  },
+  "author": "myungsunrex@gmail.com",
+  "license": "MIT"
+}

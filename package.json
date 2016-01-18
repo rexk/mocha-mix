@@ -2,7 +2,7 @@
   "name": "mocha-mix",
   "version": "1.0.0-alpha.0",
   "description": "An easy way to test and mock your React Components",
-  "main": "./index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "echo \"ok\"",
     "test:cover": "istanbul cover _mocha --require ./mocha-processor.js test examples/tests",
