@@ -50,20 +50,29 @@ var ComplexComponent = mix.import();
 //     afterEach: function, default to global.afterEach
 //   },
 //
+// class MixMockGenerator : Function
+//   __isMixMockGenerator
+//
 // class MochaMix
-//   createMockGenerator: function
+//   MockGenerator: function
 //   use: function
 //   mix: function
+//   before: function
+//   after: function
+//   beforeEach: function
+//   afterEach: function
+//   setTestHookGetter: function
+//   setDefaultMockGenerator: function
 //
-// class MixRoot
-//   root: string  default process.cwd
+//
+// class MixRecipe
+//   roodDir: string  default process.cwd
 //   import: string required module path or module name
 //   mocks: Map<string, MixMockDescription> or Map<string, string>,
-//   originals: Map<string, any>
 //
 // class MixMockDescription
 //   import: string required
-//   mock: MixMockGenerator or anything else   default to defaultMockGenerator
+//   mock: one of MixMockGenerator or anything else   default to defaultMockGenerator
 //
 // class Mixer
 //   import: function
@@ -80,8 +89,8 @@ var ComplexComponent = mix.import();
 //   after: function
 //   beforeEach: function
 //   afterEach: function,
-//   getTestHook: function,
-//   defaultMockGenerator:
+//   setTestHook: function,
+//   setDefaultMockGenerator: Function
 //
 //
 // function BeforeHook

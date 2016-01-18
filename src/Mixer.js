@@ -1,6 +1,5 @@
 var path = require('path');
-var registry = require('./registry');
-var createMixRoot = require('./createMixRoot');
+var MixRecipe = require('./MixRecipe');
 var REGEX_IS_RELATIVE = /^\./i;
 
 function registerHook(mixer) {
@@ -31,13 +30,14 @@ function getModulePath(importPath, rootDir) {
   return importPath;
 }
 
-function createMixer(mixRoot) {
-  var mixRoot = createMixRoot(mixRoot);
+function Mixer(recipe, defaultMockGenerator) {
+  recipe = recipe || {};
+  recipe.defaultMockGenerator = recipe.defaultMockGenerator || defaultMockGenerator;
+  var mixRoot = MixRecipe(recipe);
   var importPath = getModulePath(mixRoot.import, mixRoot.rootDir);
   var mocks = {};
-  var originals = {};
   var mixer = {
-    mixRoot: mixRoot,
+    recipe: mixRoot,
     import: function () {
       var _module = require(importPath);
       var _module2 = _module && _module.__esModule ? _module : {default: _module};
@@ -55,12 +55,11 @@ function createMixer(mixRoot) {
     clearMock: function (name) {
       delete mocks[name];
     },
-    mocks: mocks,
-    originals: originals
+    mocks: mocks
   };
 
   registerHooks(mixer);
   return mixer;
 }
 
-module.exports = createMixer;
+module.exports = Mixer;

@@ -1,17 +1,10 @@
-var PluginManager = require('./PluginManager');
-var createMixer = require('./createMixer');
-var createMockGenerator = require('./createMockGenerator');
+var MochaMix = require('./MochaMix');
+var MockGenerator = require('./MockGenerator');
+var MixHook = require('./MixHook');
+var MixPlugin = require('./MixPlugin');
 
-function use(plugin) {
-  if (typeof plugin !== 'function') {
-    throw new Error('mocha-mix plugins must be a function');
-  }
-
-  plugin(PluginManager);
-}
-
-module.exports = {
-  createMockGenerator: createMockGenerator,
-  use: use,
-  mix: createMixer
-};
+module.exports = MochaMix();
+module.exports.MochaMix = MochaMix;
+module.exports.MockGenerator = MockGenerator;
+module.exports.MixHook = MixHook;
+module.exports.MixPlugin = MixPlugin;
