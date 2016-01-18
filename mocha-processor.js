@@ -68,7 +68,7 @@ var ComplexComponent = mix.import();
 // class MixRecipe
 //   roodDir: string  default process.cwd
 //   import: string required module path or module name
-//   mocks: Map<string, MixMockDescription> or Map<string, string>,
+//   mocks: List<MockDescription>
 //
 // class MixMockDescription
 //   import: string required
