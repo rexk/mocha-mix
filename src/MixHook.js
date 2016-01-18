@@ -5,16 +5,16 @@ function isMochaMixHook(hook) {
 }
 
 function MixHook(hook) {
-  if (!isFunction(hook)) {
-    throw new Error('createMixHook expects a function as its argument');
-  }
-
   if (isMochaMixHook(hook)) {
     return hook;
   }
 
-  function HookWrapper(options) {
-    return hook(options);
+  if (!isFunction(hook)) {
+    throw new Error('createMixHook expects a function as its argument');
+  }
+
+  function HookWrapper(mixer) {
+    return hook(mixer);
   }
 
   HookWrapper.__isMochaMixHook = true;
@@ -22,3 +22,4 @@ function MixHook(hook) {
 }
 
 module.exports = MixHook;
+module.exports.isMochaMixHook = isMochaMixHook;

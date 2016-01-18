@@ -1,10 +1,11 @@
+var assign = require('lodash.assign');
+var isFunction = require('lodash.isfunction');
 var Mixer = require('./Mixer');
 var MixHook = require('./MixHook');
 var MixPlugin = require('./MixPlugin');
 var MockGenerator = require('./MockGenerator');
 var defaultMockGenerator = require('./defaultMockGenerator');
 var defaultTestHooksGetter = require('./defaultTestHooksGetter');
-var isFunction = require('./lodash.isFunction');
 
 var TestHooksEnum = ['before', 'beforeEach', 'afterEach', 'after'];
 
@@ -19,14 +20,22 @@ function registerHooks(mixer, hooks, testHooksGetter) {
 };
 
 function addTestHook(hooks, hookName, hookFunc) {
-  hooks[hookName].push(MixHook(hookFunc));
+  hook = hookFunc;
+  if (!MixHook.isMochaMixHook(hook)) {
+    hook = MixHook(function () {
+      return hookFunc;
+    });
+  }
+  hooks[hookName].push(hook);
 }
 
 function clearTestHook(hooks, hookName) {
   hooks[hookName] = [];
 }
 
-function MochaMix() {
+function MochaMix(options) {
+  options = options || {};
+
   var mixHooks = {
     before: [],
     beforeEach: [],
@@ -34,12 +43,13 @@ function MochaMix() {
     after: []
   };
 
-  var testHooksGetter = defaultTestHooksGetter;
-  var mockGenerator = defaultMockGenerator;
+  var testHooksGetter = options.testHooksGetter || defaultTestHooksGetter;
+  var mockGenerator = options.defaultMockGenerator || defaultMockGenerator;
 
   var mochaMix = {
     mix: function (recipe) {
-      var mixer = Mixer(recipe, mockGenerator);
+      recipe = assign({}, {defaultMockGenerator: mockGenerator}, recipe);
+      var mixer = Mixer(recipe);
       registerHooks(mixer, mixHooks, testHooksGetter);
       return mixer;
     },
@@ -54,7 +64,11 @@ function MochaMix() {
       testHooksGetter = getter;
     },
     setDefaultMockGenerator: function (generator) {
-      mockGenerator = MockGenerator(generator);
+      var _mockGenerator = generator;
+      if (!MockGenerator.isMochaMixMockGenerator(_mockGenerator)) {
+        _mockGenerator = MockGenerator(generator);
+      }
+      mockGenerator = _mockGenerator;
     },
     before: function (hook) {
       addTestHook(mixHooks, 'before', hook);
@@ -75,7 +89,11 @@ function MochaMix() {
       TestHooksEnum.forEach(function (hookName) {
         clearTestHook(hooks, hookName);
       });
-    }
+    },
+
+    MixHook: MixHook,
+    MixPlugin: MixPlugin,
+    MockGenerator: MockGenerator
   };
 
   return mochaMix;

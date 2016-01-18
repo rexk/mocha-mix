@@ -1,4 +1,4 @@
-var isFunction = require('lodsah.isfunction');
+var isFunction = require('lodash.isfunction');
 
 function isMochaMixMockGenerator(generator) {
   return generator && generator.__isMochaMixMockGenerator;

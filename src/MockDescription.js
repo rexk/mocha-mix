@@ -21,21 +21,22 @@ function MockDescription(mockName, description, defaultMockGenerator) {
     throw new Error('MochaMix expects proper import path');
   }
 
+  var mockGenerator = description.mock;
   var mock = description.mock;
-  if (isUndefined(mock)) {
-    mock = defaultMockGenerator
+  if (isUndefined(mockGenerator)) {
+    mockGenerator = defaultMockGenerator;
   }
 
-  if (!isMochaMixMockGenerator(mock)) {
-    mock = MockGenerator(function generate() {
-      return description.mock;
+  if (!isMochaMixMockGenerator(mockGenerator)) {
+    mockGenerator = MockGenerator(function generate() {
+      return mock;
     });
   }
 
   return {
     mockName: mockName,
     import: description.import,
-    mock: mock 
+    mock: mockGenerator
   };
 }
 

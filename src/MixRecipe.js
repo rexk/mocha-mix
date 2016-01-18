@@ -11,15 +11,15 @@ function MixRecipe(recipe) {
     throw new Error('MochaMix is expecting an object as an argument');
   }
 
-  var mockSpecs = recpie.mocks || {};
+  var mockSpecs = recipe.mocks || {};
   var mocks = Object.keys(mockSpecs)
     .map(function (mockName) {
-      return MockDescription(mockName, description, recipe.defaultMockGenerator);
+      return MockDescription(mockName, mockSpecs[mockName], recipe.defaultMockGenerator);
     });
 
   return {
-    rootDir: recpie.rootDir || process.cwd(),
-    import: recpie.import,
+    rootDir: recipe.rootDir || process.cwd(),
+    import: recipe.import,
     mocks: mocks
   }
 }

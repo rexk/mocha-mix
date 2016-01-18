@@ -2,21 +2,6 @@ var path = require('path');
 var MixRecipe = require('./MixRecipe');
 var REGEX_IS_RELATIVE = /^\./i;
 
-function registerHook(mixer) {
-  return function register(hookName) {
-    var getTestHooks = registry.get('getTestHooks') || Function.prototype;
-    var testHooks = getTestHooks();
-    var hookFuncs = registry.get(hookName) || [];
-    hookFuncs.forEach(function (hookFunc) {
-      testHooks[hookName](hookFunc(mixer));
-    });
-  }
-}
-
-function registerHooks(mixer) {
-  ['before', 'after', 'afterEach', 'beforeEach'].forEach(registerHook(mixer));
-}
-
 function getModulePath(importPath, rootDir) {
   if (path.isAbsolute(importPath)) {
     return mock.import;
@@ -30,14 +15,13 @@ function getModulePath(importPath, rootDir) {
   return importPath;
 }
 
-function Mixer(recipe, defaultMockGenerator) {
-  recipe = recipe || {};
-  recipe.defaultMockGenerator = recipe.defaultMockGenerator || defaultMockGenerator;
+function Mixer(recipe) {
   var mixRoot = MixRecipe(recipe);
   var importPath = getModulePath(mixRoot.import, mixRoot.rootDir);
   var mocks = {};
   var mixer = {
     recipe: mixRoot,
+    mocks: mocks,
     import: function () {
       var _module = require(importPath);
       var _module2 = _module && _module.__esModule ? _module : {default: _module};
@@ -55,10 +39,10 @@ function Mixer(recipe, defaultMockGenerator) {
     clearMock: function (name) {
       delete mocks[name];
     },
-    mocks: mocks
+    clearAllMocks: function () {
+      mocks = {};
+    },
   };
-
-  registerHooks(mixer);
   return mixer;
 }
 
