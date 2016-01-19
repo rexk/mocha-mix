@@ -3,7 +3,7 @@ function defaultTestHooksGetter() {
     before: global.before,
     beforeEach: global.beforeEach,
     afterEach: global.afterEach,
-    after: global.afterEach
+    after: global.after
   };
 }
 
