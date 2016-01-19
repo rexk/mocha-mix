@@ -1,11 +1,18 @@
 language: node_js
 node_js:
-  - '4.1'
-  - '4.0'
-  - '0.12'
+- '4.1'
+- '4.0'
+- '0.12'
 addons:
   code_climate:
     repo_token: 1074dcdf1c313984894a3e9f8f2b801daf2c077545d96cf7aba7dc5b54fb619d
-
 after_script:
-  - codeclimate < coverage/lcov.info
+- codeclimate < coverage/lcov.info
+deploy:
+  provider: npm
+  email: myungsunrex@gmail.com
+  api_key:
+    secure: g+RlxYg6r6Evg67Sd6L5T3INKypMgEVMHxHo5xvAJnm3c9FhsUHSqG8atwKpqzx3G4v5aZJL2zJI3OzmTATLUNHhq5VivByNdwlL6M98IGEpiGsqbDbuVANKGJCAU7yUBejBCNIsUKaqgdUYo0ViP2yenMUgBY9DrkdGQ2aeOsAAlnmtnhf78LDjz+AprhTf3OXMoe3TY7lcD0e56v/F6TXB4M8mJIsEQLcO7t5a2W8PsDmR/3cSGljPkQk5/10YfFgvbj4sYhlpq53EdrWTDfSP62dcVVMul831uO3hoK+FLp4xReMNcAWtQWnyD6Fz3X6vtwuuiYt+Q1D1Ncl4VkzDriXGaWudkXTRt8Rnxq5MtjPkrU206kWuYNysvtBAT5Zqr2fVHcFg0IR3j1DTZAJy+CQaIuAEQmyC6mJ7C4fsnMnWuyc76X4/+r6HOvrpPVpaC4gKyRjzwlHOO1BjBpF586dUY3FrFxbbwSQuYm0T+ViCDHVlwHAIoMkI3aFHMDCbp+JHDsCi9vwKxMsAm2De/E36uvEm3prtm1ypjFO0A7Su5l67e43pHevRWnh3+JU0erVZjLMaTKg2P2/6Nv4GJR+pjSg24sRw7yJ3T5lX8ZkBQlYogzIW8Mxu+wrcObLo7ZlVxfr4rBAun7k/JZPGR5RvIrFqRwSKFie6vII=
+  on:
+    tags: true
+    repo: rexk/mocha-mix
