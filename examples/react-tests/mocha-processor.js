@@ -8,6 +8,7 @@ var MockeryPlugin = require('mocha-mix-mockery');
 
 babelRegister();
 
+MochaMix.use(JsdomPlugin);
 MochaMix.use(MockeryPlugin({
   ignoreList: [{
     import: 'react',
@@ -18,5 +19,4 @@ MochaMix.use(MockeryPlugin({
   }]
 }));
 
-MochaMix.use(JsdomPlugin);
 MochaMix.use(ReactPlugin);

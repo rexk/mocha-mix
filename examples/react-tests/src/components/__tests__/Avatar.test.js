@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import MochaMix from 'mocha-mix';
 import expect from 'expect';
 import {
@@ -16,23 +15,16 @@ describe.only('Avatar', function () {
       ProfilePic: './ProfilePic'
     }
   });
+
   let Avatar;
-  this.timeout(10000);
-  beforeEach(function (done) {
-    console.log('import');
-    let before = Date.now();
+  beforeEach(function () {
     Avatar = mix.import();
-    console.log('after', Date.now() - before + 'ms');
-    done();
   })
 
-  it('should pass username to ProfileLink and ProfilePic', () => {
+  it('should pass username to ProfileLink and ProfilePic', function () {
     const username = 'rexk';
     const {ProfileLink, ProfilePic} = mix.mocks;
-    let before = Date.now();
-    console.log('renderIntoDocs');
     let avatar = renderIntoDocument(<Avatar username={username} />);
-    console.log('took: ', before - Date.now() + 'ms');
     let profileLink = findRenderedComponentWithType(avatar, ProfileLink);
     let profilePic = findRenderedComponentWithType(avatar, ProfilePic);
     expect(profileLink.props.username).toBe(username);
@@ -42,13 +34,7 @@ describe.only('Avatar', function () {
   it('should insert into dom', function () {
     const username = 'rexk';
     const {ProfileLink, ProfilePic} = mix.mocks;
-    console.log('mocks', mix.mocks);
-    let now = Date.now();
-    console.log('start');
-    const mountNode = document.createElement('DIV');
-    document.body.appendChild(mountNode);
-    let avatar = ReactDOM.render(<Avatar username={username} />, mountNode);
-    console.log('end', Date.now() - now + 'ms');
+    let avatar = renderIntoDocument(<Avatar username={username} />);
     let profileLink = findRenderedComponentWithType(avatar, ProfileLink);
     let profilePic = findRenderedComponentWithType(avatar, ProfilePic);
     expect(profileLink.props.username).toBe(username);
