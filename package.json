@@ -27,6 +27,10 @@
     "type": "git",
     "url": "https://github.com/rexk/mocha-mix"
   },
+  "engines": {
+    "node": ">= 0.12",
+    "npm": ">= 1.0.20"
+  },
   "devDependencies": {
     "babel-eslint": "^5.0.0-beta6",
     "eslint": "^1.10.3",
