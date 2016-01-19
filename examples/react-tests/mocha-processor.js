@@ -10,7 +10,7 @@ babelRegister();
 
 MochaMix.use(JsdomPlugin);
 MochaMix.use(MockeryPlugin({
-  ignoreList: [{
+  ignore: [{
     import: 'react',
     mock: React
   }, {

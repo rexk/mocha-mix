@@ -89,9 +89,7 @@ function MochaMix(options) {
         clearTestHook(mixHooks, hookName);
       });
     },
-
     MixHook: MixHook,
-    MixPlugin: MixPlugin,
     MockGenerator: MockGenerator
   };
 

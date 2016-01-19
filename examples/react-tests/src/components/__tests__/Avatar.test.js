@@ -1,6 +1,7 @@
 import React from 'react';
 import MochaMix from 'mocha-mix';
 import expect from 'expect';
+
 import {
   findRenderedComponentWithType,
   renderIntoDocument
@@ -19,7 +20,7 @@ describe.only('Avatar', function () {
   let Avatar;
   beforeEach(function () {
     Avatar = mix.import();
-  })
+  });
 
   it('should pass username to ProfileLink and ProfilePic', function () {
     const username = 'rexk';
@@ -31,13 +32,18 @@ describe.only('Avatar', function () {
     expect(profilePic.props.username).toBe(username);
   });
 
-  it('should insert into dom', function () {
+  it('should trigger onClick', function () {
     const username = 'rexk';
-    const {ProfileLink, ProfilePic} = mix.mocks;
-    let avatar = renderIntoDocument(<Avatar username={username} />);
-    let profileLink = findRenderedComponentWithType(avatar, ProfileLink);
+    const onClickSpy = expect.createSpy();
+    const {ProfilePic} = mix.mocks;
+    let avatar = renderIntoDocument(
+      <Avatar
+        username={username}
+        onClick={onClickSpy} />
+    );
     let profilePic = findRenderedComponentWithType(avatar, ProfilePic);
-    expect(profileLink.props.username).toBe(username);
-    expect(profilePic.props.username).toBe(username);
+    // triger onClick from profilePic
+    profilePic.props.onClick();
+    expect(onClickSpy).toHaveBeenCalled();
   });
 });

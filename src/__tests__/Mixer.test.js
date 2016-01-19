@@ -1,7 +1,5 @@
 var MochaMix = require('../MochaMix');
-var Mxier = require('../Mixer');
 var expect = require('expect');
-var sinon = require('sinon');
 
 describe('Mixer', function () {
   var mochaMix = MochaMix();
