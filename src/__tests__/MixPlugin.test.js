@@ -3,8 +3,7 @@ var MixPlugin = require('../MixPlugin');
 
 describe('MixPlugin', function () {
 
-  function EmptyPlugin() {};
-  function EmptyPluginGenerator() { return EmptyPlugin; }
+  function EmptyPluginGenerator() {}
 
   it('should throw error if given argument is not a function', function () {
     var nonFunctionalValues = [
@@ -29,10 +28,4 @@ describe('MixPlugin', function () {
 
     expect(MixPlugin(expected)).toBe(expected);
   });
-
-  it('should return true is given argument is MochaMixPlugin', function () {
-    var plugin = MixPlugin(EmptyPluginGenerator);
-    expect(MixPlugin.isMochaMixPlugin(plugin)).toBe(true);
-  });
-  
 });

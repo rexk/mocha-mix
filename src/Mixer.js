@@ -34,13 +34,13 @@ function Mixer(recipe) {
       return require(importPath);
     },
     registerMock: function(name, mock) {
-      mocks[name] = mock
+      mixer.mocks[name] = mock
     },
     clearMock: function (name) {
-      delete mocks[name];
+      delete mixer.mocks[name];
     },
     clearAllMocks: function () {
-      mocks = {};
+      mixer.mocks = {};
     },
   };
   return mixer;

@@ -35,7 +35,6 @@ function clearTestHook(hooks, hookName) {
 
 function MochaMix(options) {
   options = options || {};
-
   var mixHooks = {
     before: [],
     beforeEach: [],
@@ -57,9 +56,9 @@ function MochaMix(options) {
       plugin = MixPlugin(plugin);
       plugin(mochaMix);
     },
-    setTestHookGetter: function (getter) {
+    setTestHooksGetter: function (getter) {
       if (!isFunction(getter)) {
-        throw new Error('setTestHookGetter is expecting a function as its argument');
+        throw new Error('setTestHooksGetter is expecting a function as its argument');
       }
       testHooksGetter = getter;
     },
@@ -83,11 +82,11 @@ function MochaMix(options) {
       addTestHook(mixHooks, 'after', hook);
     },
     clearHook: function (hookName) {
-      clearTestHook(hooks, hookName);
+      clearTestHook(mixHooks, hookName);
     },
     clearAllHooks: function () {
       TestHooksEnum.forEach(function (hookName) {
-        clearTestHook(hooks, hookName);
+        clearTestHook(mixHooks, hookName);
       });
     },
 

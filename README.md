@@ -33,3 +33,125 @@ creating a simple, yet powerful solution for jsx-test.
 ```
 npm install --save-dev mocha-mix
 ```
+
+## API Refernce
+
+### `MochaMix`
+
+#### `mix`
+
+Returns a new Mixer with given recipe object.
+> mix(recipe: Recipe): Mixer
+
+#### `use`
+
+Takes given functional argument as a plugin.
+> use(plugin: Function): void
+
+#### `setTestHooksGetter`
+
+Replaces a testHookGetter with given getter Function.
+> setTestHooksGetter(getter: Function): void
+
+#### `setDefaultMockGenerator`
+
+Replaces a defaultMockGenerator with given generator function
+> setDefaultMockGenerator(generator: Function or MockGenerator): void
+
+#### `before`
+
+Registers given function as beforeAll hook
+> before(hook: Function or MixHook): void
+
+
+#### `before`
+
+Registers given function as beforeAll hook
+> before(hook: Function or MixHook): void
+
+#### `beforeEach`
+
+Registers given function as beforeEach hook
+> beforeEach(hook: Function or MixHook): void
+
+#### `afterEach`
+
+Registers given function as afterEach hook
+> afterEach(hook: Function or MixHook): void
+
+#### `after`
+
+Registers given function as after hook
+> after(hook: Function or MixHook): void
+
+#### `clearHook`
+
+clears all registered named hooks with given hookName
+> clearHook(hookName: string): void
+
+#### `clearAllHooks`
+
+clears all registered hooks
+> clearAllHooks(void): void
+
+#### `MockGenerator`
+
+Returns a function which wraps the given function. In testing runtime,
+MockDescription instance will be passed down to the generator for further
+customization.
+
+> MockGenerator(generator: Function): GeneratorWrapper
+
+#### `MixHook`
+
+Returns a function which wraps the given test hook function.
+> MixHook(hook: Function): Wrapper
+
+#### `MixPlugin`
+
+Returns a function if the given plugin function is valid.
+> MixPlugin(plugin: Function): Function
+
+#### `Mixer`
+
+Returns mixer instance.
+
+> Mixer(MixRecipe): Mixer
+
+##### `import`
+
+Returns a default module. Follows ES6 Module standard.
+> import(void): Any
+
+##### `require`
+
+Returns a module using commonJS pattern.
+> require(void): Any
+
+##### `importAsWildcard`
+
+Returns a module as wildcard import. Follows ES6 Module standard.
+
+##### `registerMocks`
+
+Registers mock reference so that in can be referenced in a test scope.
+> registerMock(name: String, mock: Any): void
+
+##### `clearMock`
+
+Clears a mock reference with given name reference.
+> clearMock(name: String): void
+
+##### `clearAllMocks`
+
+Clears all mock references
+> clearAllMocks(void): void
+
+### `MixRecipe`
+
+MixRecipe is a guide object.
+
+#### `rootDir`
+
+> rootDir: string
+> defaults: process.cwd()

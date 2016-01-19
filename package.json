@@ -4,11 +4,9 @@
   "description": "An easy way to test and mock your React Components",
   "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"ok\"",
-    "test:cover": "istanbul cover _mocha --require ./mocha-processor.js test examples/tests",
-    "test:watch": "mocha --watch $(find ./src -name *.test.js)",
-    "mocha": "mocha --require ./mocha-processor.js test",
-    "examples": "mocha --require ./mocha-processor.js examples/tests"
+    "test": "istanbul cover _mocha $(find ./src -name *.test.js)",
+    "test:simple": "mocha $(find ./src -name *.test.js)",
+    "test:watch": "mocha --watch $(find ./src -name *.test.js)"
   },
   "author": {
     "name": "RexK",
@@ -34,6 +32,7 @@
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.15.0",
     "expect": "^1.13.4",
+    "istanbul": "^0.4.2",
     "mocha": "^2.3.4",
     "mocha-mix-mockery": "0.0.1-alpha.2",
     "sinon": "^1.17.2"
