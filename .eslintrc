@@ -26,6 +26,8 @@
     "new-parens": 0,
     "no-cond-assign": 0,
     "quotes": 0,
+    "semi": [2, "always"],
+    "no-extra-semi": 2,
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
     "react/react-in-jsx-scope": 2,

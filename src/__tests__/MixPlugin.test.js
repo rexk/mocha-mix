@@ -18,7 +18,7 @@ describe('MixPlugin', function () {
 
     nonFunctionalValues.forEach(function testValue(plugin) {
       expect(function monitor() {
-        MixPlugin(plugin)
+        MixPlugin(plugin);
       }).toThrow();
     });
   });

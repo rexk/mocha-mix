@@ -17,7 +17,7 @@ function registerHooks(mixer, hooks, testHooksGetter) {
       testHooks[hookName](hookFunc(mixer));
     });
   });
-};
+}
 
 function addTestHook(hooks, hookName, hookFunc) {
   hook = hookFunc;

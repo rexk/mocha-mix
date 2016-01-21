@@ -34,7 +34,7 @@ function Mixer(recipe) {
       return require(importPath);
     },
     registerMock: function(name, mock) {
-      mixer.mocks[name] = mock
+      mixer.mocks[name] = mock;
     },
     clearMock: function (name) {
       delete mixer.mocks[name];

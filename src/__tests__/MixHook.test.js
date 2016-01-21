@@ -3,7 +3,7 @@ var MixHook = require('../MixHook');
 
 describe('MixHook', function () {
 
-  function EmptyHook() {};
+  function EmptyHook() {}
   function EmptyHookGenerator() { return EmptyHook; }
 
   it('should throw error if given argument is not a function', function () {
@@ -19,7 +19,7 @@ describe('MixHook', function () {
 
     nonFunctionalValues.forEach(function testValue(plugin) {
       expect(function monitor() {
-        MixHook(plugin)
+        MixHook(plugin);
       }).toThrow();
     });
   });

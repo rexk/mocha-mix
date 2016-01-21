@@ -3,7 +3,7 @@ var MockGenerator = require('../MockGenerator');
 
 describe('MockGenerator', function () {
 
-  function EmptyMock() {};
+  function EmptyMock() {}
   function EmptyMockGenerator() { return EmptyMock; }
 
   it('should throw error if given argument is not a function', function () {
@@ -19,7 +19,7 @@ describe('MockGenerator', function () {
 
     nonFunctionalValues.forEach(function testValue(plugin) {
       expect(function monitor() {
-        MockGenerator(plugin)
+        MockGenerator(plugin);
       }).toThrow();
     });
   });

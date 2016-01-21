@@ -21,7 +21,7 @@ function MixRecipe(recipe) {
     rootDir: recipe.rootDir || process.cwd(),
     import: recipe.import,
     mocks: mocks
-  }
+  };
 }
 
 module.exports = MixRecipe;
