@@ -7,7 +7,7 @@ import {
   renderIntoDocument
 } from 'react-addons-test-utils';
 
-describe.only('Avatar', function () {
+describe('Avatar', function () {
   const mix = MochaMix.mix({
     rootDir: __dirname,
     import: '../Avatar',

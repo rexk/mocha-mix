@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --require ./mocha-processor.js $(find ./src -name *.test.js)",
-    "test:watch": "mocha --watch --require ./mocha-processor.js $(find ./src -name *.test.js)"
+    "test:watch": "mocha --watch --require ./mocha-processor.js $(find ./src -name *.test.js)",
+    "jest": "BABEL_JEST_STAGE=0 jest",
+    "jest:w": "BABEL_JEST_STAGE=0 jest --watch"
   },
   "dependencies": {
     "babel-core": "^6.4.0",
@@ -25,5 +27,19 @@
     "react-dom": "^0.14.6"
   },
   "author": "myungsunrex@gmail.com",
-  "license": "MIT"
+  "license": "MIT",
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "setupTestFrameworkScriptFile": "<rootDir>/jest-processor.js",
+    "testFileExtensions": ["test.js"],
+    "testRunner": "<rootDir>/node_modules/jest-cli/src/testRunners/jasmine/jasmine2.js",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/mocha-mix",
+      "<rootDir>/node_modules/mocha-mix-react",
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom",
+      "<rootDir>/node_modules/react-addons-test-utils",
+      "<rootDir>/node_modules/fbjs"
+    ]
+  }
 }

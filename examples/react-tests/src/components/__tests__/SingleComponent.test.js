@@ -8,7 +8,6 @@ describe('SingleComponent', function () {
     rootDir: __dirname,
     import: '../SingleComponent'
   });
-  this.timeout(100000);
   it('should have defaultProps assigned', function (done) {
     const SingleComponent = mix.import();
     let singleComponent = TestUtils.renderIntoDocument(<SingleComponent />);

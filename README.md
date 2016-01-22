@@ -9,32 +9,25 @@
 [![Code Climate](https://codeclimate.com/github/rexk/mocha-mix/badges/gpa.svg)](https://codeclimate.com/github/rexk/mocha-mix)
 [![Test Coverage](https://codeclimate.com/github/rexk/mocha-mix/badges/coverage.svg)](https://codeclimate.com/github/rexk/mocha-mix/coverage)
 
-`mocha-mix` is a tool that make it easy to test ReactJS files and includes some helpers for testing and mocking modules and components. Mix it with `mocha` with ease, and fast testing.
-
-The main feature of `mocha-mix` are:
-* Allows you to require `.jsx`, `es6`, `js` in your test
-* Includes some helpers to simplify the test of React Components
-* Assertion methods to check the component renders the correct html based on the given `props` (from Yahoo's jsx-test)
-* Ability to specify modules and components to be mocked.
-* Works with `mocha`.
-
-## Why not Jest?
-Jest is wonderful testing tool with automatic mocking and easy set up. It is not, however
-great tool, if you already have existing test setup in `mocha` and wishes to keep
-the testing framework. Jest also mocks everything by default, and if you are looking
-for more targeted mocking, Jest is not the tool. Just like me.
-
-## Inspiration
-I am grateful http://www.hammerlab.org for posting `Testing React Web Apps with Mocha`.
-Most of implementation is based on the post. I also thank you for https://github.com/yahoo/jsx-test for
-creating a simple, yet powerful solution for jsx-test.
+`mocha-mix` started as a out-of-box unit testing tool for ReactJS. It focuses more toward providing interface for creating `easy mocking and testing scope isolation`.
 
 ## Install
-```
+
+```bash
 npm install --save-dev mocha-mix
 ```
 
-## API Refernce
+## Plugins
+
+* `mocha-mix-jsdom`: Exposes `window` and `document` to global scope. Useful to test React using `mocha`.
+* `mocha-mix-jsdom-3`: `mocha-mix-jsdom` using `jsdom@3.x`. Useful for those who uses node@0.12.x or lower.
+* `mocha-mix-react`: Provides helpful default mock generator for React unit testing.
+* `mocha-mix-react.0.13`: `mocha-mix-react` using `react@0.13.x`
+* `mocha-mix-mockery`: Uses `mockery` as mock engine.
+* `mocha-mix-jest`: Uses jest as mock engine. (In progress)
+* `mocha-mix-jasmine`: Provides test hooks getter for jasmine. (In progress)
+
+## API References
 
 ### `MochaMix`
 
