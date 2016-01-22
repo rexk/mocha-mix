@@ -1,6 +1,6 @@
 {
   "name": "mocha-mix",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0",
   "description": "An easy way to test and mock your React Components",
   "main": "./src/index.js",
   "scripts": {

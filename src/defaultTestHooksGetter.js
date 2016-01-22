@@ -1,3 +1,8 @@
+/**
+ * Returns mocha specific test hooks register.
+ *
+ * @return {TestHooks}
+ */
 function defaultTestHooksGetter() {
   return {
     before: global.before,

@@ -16,11 +16,11 @@ function getModulePath(importPath, rootDir) {
 }
 
 function Mixer(recipe) {
-  var mixRoot = MixRecipe(recipe);
-  var importPath = getModulePath(mixRoot.import, mixRoot.rootDir);
+  var mixRecipe = MixRecipe(recipe);
+  var importPath = getModulePath(mixRecipe.import, mixRecipe.rootDir);
   var mocks = {};
   var mixer = {
-    recipe: mixRoot,
+    recipe: mixRecipe,
     mocks: mocks,
     import: function () {
       var _module = require(importPath);
