@@ -167,9 +167,9 @@ build/Release
 
 mocha-processor.js
 examples/
-.gitignore
+.*ignore
 .*rc
 .*.yml
-.npmignore
+scripts/
 .vagrant/
 Vagrantfile
