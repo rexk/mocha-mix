@@ -7,9 +7,10 @@ var ReactPlugin = require('mocha-mix-react');
 
 MochaMix.use(ReactPlugin);
 
-MochaMix.use(function (mochaMix) {
+MochaMix.use(function JestPlugin(mochaMix) {
   var MixHook = mochaMix.MixHook;
   mochaMix.setTestHooksGetter(function () {
+    // For Jasmine 2.x runner
     return {
       before: global.beforeAll,
       beforeEach: global.beforeEach,
@@ -38,3 +39,5 @@ MochaMix.use(function (mochaMix) {
     jest.autoMockOn();
   });
 });
+
+jest.autoMockOff();
