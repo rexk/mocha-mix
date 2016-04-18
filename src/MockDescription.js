@@ -21,10 +21,10 @@ function hasValidImportPath(description) {
  * @param  {String}                  mockName              name of the mock. Usually used as a key for mock reference object.
  * @param  {String|MockDescription}  description           description object or a string indicating import path of a module.
  * @param  {MockGenerator}           defaultMockGenerator  defaultMockGenerator to be used if description.mock is not defined.
- *
+ * @param  {String}                  targetPath            full import path of the target test file.
  * @return {MockDescription}
  */
-function MockDescription(mockName, description, defaultMockGenerator) {
+function MockDescription(mockName, description, defaultMockGenerator, targetPath) {
   if (isString(description)) {
     description = {
       import: description
@@ -64,7 +64,14 @@ function MockDescription(mockName, description, defaultMockGenerator) {
     /**
      * @type {MockGenerator|Any}
      */
-    mock: mockGenerator
+    mock: mockGenerator,
+
+    /**
+     * path of a target file being injected with mocked modules.
+     * This path is useful, in case mock generator needs to load an original module.
+     * @type {[type]}
+     */
+    targetPath: targetPath,
   };
 }
 

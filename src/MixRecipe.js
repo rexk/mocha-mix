@@ -18,14 +18,19 @@ function MixRecipe(recipe) {
     throw new Error('MochaMix is expecting an object as an argument');
   }
 
+  var rootDir = recipe.rootDir || process.cwd();
   var mixMap = recipe.mocks || {};
   var mocks = Object.keys(mixMap)
     .map(function (mockName) {
-      return MockDescription(mockName, mixMap[mockName], recipe.defaultMockGenerator);
+      return MockDescription(
+        mockName,
+        mixMap[mockName],
+        recipe.defaultMockGenerator
+      );
     });
 
   return {
-    rootDir: recipe.rootDir || process.cwd(),
+    rootDir: rootDir,
     import: recipe.import,
     mocks: mocks
   };
