@@ -1,6 +1,31 @@
+var fs = require('fs');
+var path = require('path');
 var isObject = require('lodash.isobject');
 var isUndefined = require('lodash.isundefined');
 var MockDescription = require('./MockDescription');
+var SupportedExtensions = [
+  '',
+  '.js',
+  '.jsx',
+  '.es6',
+  '.es6.js',
+  '.coffee',
+  '.ts'
+];
+
+function getTargetPath(rootDir, importPath) {
+  var fullPath = path.isAbsolute(importPath) ?
+    importPath :
+    path.join(rootDir, importPath);
+  var found = SupportedExtensions.some(function findFile(ext) {
+    var filePath = fullPath + ext;
+    return fs.existsSync(filePath);
+  });
+
+  return found ?
+    path.dirname(fullPath) :
+    fullPath ;
+}
 
 function isValidObject(val) {
   return !isUndefined(val) && val !== null && isObject(val);
@@ -20,12 +45,14 @@ function MixRecipe(recipe) {
 
   var rootDir = recipe.rootDir || process.cwd();
   var mixMap = recipe.mocks || {};
+  var targetPath = getTargetPath(rootDir, recipe.import);
   var mocks = Object.keys(mixMap)
     .map(function (mockName) {
       return MockDescription(
         mockName,
         mixMap[mockName],
-        recipe.defaultMockGenerator
+        recipe.defaultMockGenerator,
+        targetPath
       );
     });
 
