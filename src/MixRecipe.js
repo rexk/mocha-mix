@@ -45,14 +45,16 @@ function MixRecipe(recipe) {
 
   var rootDir = recipe.rootDir || process.cwd();
   var mixMap = recipe.mocks || {};
-  var targetPath = getTargetPath(rootDir, recipe.import);
+  var options = {
+    targetPath: getTargetPath(rootDir, recipe.import)
+  };
   var mocks = Object.keys(mixMap)
     .map(function (mockName) {
       return MockDescription(
         mockName,
         mixMap[mockName],
         recipe.defaultMockGenerator,
-        targetPath
+        options
       );
     });
 

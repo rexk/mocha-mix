@@ -32,10 +32,12 @@ describe('MockDescription', function () {
       mockName: mockName,
       import: importPath,
       mock: defaultMockGenerator,
-      targetPath: targetPath,
+      options: {
+        targetPath: targetPath,
+      }
     };
 
-    var actual = MockDescription(mockName, importPath, defaultMockGenerator, targetPath);
+    var actual = MockDescription(mockName, importPath, defaultMockGenerator, expected.options);
     expect(actual).toEqual(expected);
   });
 
