@@ -1,19 +1,5 @@
-var path = require('path');
 var MixRecipe = require('./MixRecipe');
-var REGEX_IS_RELATIVE = /^\./i;
-
-function getModulePath(importPath, rootDir) {
-  if (path.isAbsolute(importPath)) {
-    return mock.import;
-  }
-
-  if (REGEX_IS_RELATIVE.test(importPath)) {
-    return path.join(rootDir, importPath);
-  }
-
-  // must be npm module name such as 'react', 'react/lib/...'
-  return importPath;
-}
+var getModulePath = require('./getModulePath');
 
 function Mixer(recipe) {
   var mixRecipe = MixRecipe(recipe);

@@ -27,13 +27,17 @@ describe('MockDescription', function () {
   it('should return object with import path, if given description is a string', function () {
     var importPath = '../test.module';
     var mockName = 'TestModule';
+    var targetPath = '/Somewhere/myfile';
     var expected = {
       mockName: mockName,
       import: importPath,
-      mock: defaultMockGenerator
+      mock: defaultMockGenerator,
+      options: {
+        targetPath: targetPath,
+      }
     };
 
-    var actual = MockDescription(mockName, importPath, defaultMockGenerator);
+    var actual = MockDescription(mockName, importPath, defaultMockGenerator, expected.options);
     expect(actual).toEqual(expected);
   });
 
@@ -51,5 +55,5 @@ describe('MockDescription', function () {
     var actual = MockDescription(mockName, description, defaultMockGenerator);
     expect(actual.mock()).toEqual(expectedMock);
   });
-  
+
 });
